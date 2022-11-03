@@ -28,7 +28,7 @@ class TodoController extends Controller
         $todo->done = false;
         $todo->save();
 
-        return redirect()->route('goal.index');
+        return redirect()->route('goals.index');
     }
 
     /**
