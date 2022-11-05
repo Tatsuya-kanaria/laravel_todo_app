@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+{{-- 子ビューで個別のCSSファイルやJSファイルを読み込む手順
+親ビューにおいて、ファイルを読み込みたい位置に@stackを記述する
+子ビューにおいて、@push ～ @endpush内にファイルを読み込むコードを記述する --}}
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endpush
+
+@push('scripts')
+    <script src="{{ asset('/js/script.js') }}"></script>
+@endpush
+
 @section('content')
     <div class="container h-100">
         @if ($errors->any())
@@ -15,9 +26,17 @@
         {{-- 目標の追加用モーダル --}}
         @include('modals.add_goal')
 
+        {{-- タグの追加用モーダル --}}
+        @include('modals.add_tag')
+
         <div class="d-flex mb-3">
             <a href="#" class="link-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#addGoalModal">
                 <div class="d-flex align-items-center"><span class="fs-5 fw-bold">＋</span>&nbsp;目標の追加
+                </div>
+            </a>
+            <a href="#" class="ms-4 link-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#addTagModal">
+                <div class="d-flex align-items-center">
+                    <span class="fs-5 fw-bold">＋</span>&nbsp;タグの追加
                 </div>
             </a>
         </div>

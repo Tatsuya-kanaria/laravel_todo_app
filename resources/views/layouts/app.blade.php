@@ -17,7 +17,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    @stack('styles')
 </head>
 
 <body style="padding: 60px 0;">
@@ -31,6 +31,8 @@
 
         @include('layouts.footer')
     </div>
+
+    @stack('scripts')
 </body>
 
 </html>
